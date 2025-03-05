@@ -1,12 +1,4 @@
-import { Collection } from '@signaldb/core'
 import { type Post } from '@/models';
-import createIndexedDBAdapter from './createIndexedDBAdapter';
+import createCollection from '@/db/createCollection.ts'
 
-const posts = new Collection<Post>({
-  persistence: createIndexedDBAdapter('posts')
-});
-
-export {
-  posts,
-  createIndexedDBAdapter
-}
+export const posts = await createCollection<Post>('posts');
