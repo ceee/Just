@@ -1,0 +1,23 @@
+
+:root
+{
+  // define all color shades
+  --color-bg-shade-1: #121212;
+  --color-bg-shade-2: #1D1D1D;
+  --color-bg-shade-3: #232323;
+  --color-bg-shade-4: #2D2D2D;
+  --color-bg-shade-5: #343434;
+
+  // define all foreground color shades
+  --color-fg-shade-1: #FFFFFF;
+  --color-fg-shade-2: #A1A1A1;
+  --color-fg-shade-3: #575757;
+
+  // layout shades
+  --color-layout-bg: var(--color-bg-shade-2);
+  --color-layout-icons-fg: var(--color-fg-shade-3);
+  --color-layout-icons-hover-fg: var(--color-fg-shade-2);
+
+  // general text shades
+  --color-text: var(--color-fg-shade-1);
+}

@@ -1,0 +1,25 @@
+
+@font-face
+{
+  font-family: 'inter';
+  font-weight: 100 900;
+  font-display: block;
+  src: url('./inter.woff2') format("woff2");
+}
+
+body
+{
+  color: var(--color-text);
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--color-layout-bg);
+}
+
+.app-icon
+{
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: transparent;
+}
