@@ -18,6 +18,14 @@
   --color-layout-icons-fg: var(--color-fg-shade-3);
   --color-layout-icons-hover-fg: var(--color-fg-shade-2);
 
+  // menu shades
+  --color-menu-bg: var(--color-bg-shade-3);
+  --color-menu-item-hover-bg: var(--color-bg-shade-4);
+  --color-menu-item-count-bg: var(--color-bg-shade-4);
+  --color-menu-item-hover-count-bg: var(--color-bg-shade-5);
+
   // general text shades
   --color-text: var(--color-fg-shade-1);
+  --color-text-dim: var(--color-fg-shade-2);
+  --color-text-dim-one: var(--color-fg-shade-3);
 }

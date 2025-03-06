@@ -4,6 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
       <Folder Include="app\" />
+      <Folder Include="src\utils\" />
       <Folder Include="src\views\" />
     </ItemGroup>
 </Project>
