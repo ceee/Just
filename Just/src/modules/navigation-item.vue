@@ -1,28 +1,43 @@
 <template>
   <button type="button" class="navigation-item" :class="classes">
     <ui-icon :symbol="symbol" class="navigation-item-icon" />
-    <span class="navigation-item-text" v-text="name"></span>
+    <span v-if="!editing" class="navigation-item-text" v-text="name"></span>
+    <span v-else>
+      <input type="text" v-model="nameModel" class="navigation-item-input" />
+    </span>
     <span class="navigation-item-count" v-if="count > 0" v-text="count"></span>
   </button>
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
+  import { reactive, ref, defineExpose } from 'vue'
 
   interface Props {
     symbol: string,
     name: string,
     count?: number,
     active?: boolean,
-    minor?: boolean
+    minor?: boolean,
+    canSetName?: boolean
   }
 
-  const { symbol, name, count = 0, active, minor } = defineProps<Props>();
-
+  const { symbol, name, count = 0, active, minor, canSetName } = defineProps<Props>();
+  const editing = ref(false);
+  const nameModel = ref(name);
   const classes = reactive({
     'is-active': active,
     'is-list': !minor
   })
+
+
+  function edit()
+  {
+    this.editing = true;
+  }
+
+  defineExpose({
+    edit
+  });
 </script>
 
 <style scoped lang="scss">
@@ -30,14 +45,14 @@
   {
     appearance: none;
     height: 38px;
-    border-radius: 6px;
+    border-radius: var(--radius-inner);
     display: grid;
     grid-template-columns: auto minmax(0, auto) 1fr;
     text-decoration: none;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-s);
     background: transparent;
-    padding: 0 12px;
+    padding: 0 var(--space-m);
     width: 100%;
     border: 1px solid transparent;
     cursor: pointer;
@@ -71,7 +86,7 @@
     height: 20px;
     stroke-width: 1.5px;
     color: var(--color-text-dim);
-    margin-right: 8px;
+    margin-right: var(--space-s);
   }
 
   .navigation-item-text
@@ -102,5 +117,10 @@
     background: var(--color-menu-item-count-bg);
     color: var(--color-text-dim);
     //transition: background-color 0.2s ease;
+  }
+
+  .navigation-item-input
+  {
+
   }
 </style>

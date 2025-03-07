@@ -7,13 +7,38 @@
   src: url('./inter.woff2') format("woff2");
 }
 
+html, body
+{
+  font-size: 14px;
+}
+
 body
 {
   color: var(--color-text);
   font-family: 'inter', sans-serif;
-  font-size: 14px;
   line-height: 1.5;
   background: var(--color-layout-bg);
+
+  &.is-resizing *
+  {
+    transition: none !important;
+    animation-play-state: paused !important;
+  }
+}
+
+.app
+{
+  width: min(800px, 100%);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 30px;
+  padding: 10px;
+  height: 100vh;
+
+  @media (max-width: 700px)
+  {
+    display: block;
+  }
 }
 
 .app-icon
@@ -22,4 +47,13 @@ body
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: transparent;
+}
+
+button
+{
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
 }

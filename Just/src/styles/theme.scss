@@ -6,7 +6,7 @@
   --color-bg-shade-2: #1D1D1D;
   --color-bg-shade-3: #232323;
   --color-bg-shade-4: #2D2D2D;
-  --color-bg-shade-5: #343434;
+  --color-bg-shade-5: #3A3A3A;
 
   // define all foreground color shades
   --color-fg-shade-1: #FFFFFF;
@@ -18,14 +18,22 @@
   --color-layout-icons-fg: var(--color-fg-shade-3);
   --color-layout-icons-hover-fg: var(--color-fg-shade-2);
 
+  // general text shades
+  --color-text: var(--color-fg-shade-1);
+  --color-text-dim: var(--color-fg-shade-2);
+  --color-text-dim-one: var(--color-fg-shade-3);
+
   // menu shades
   --color-menu-bg: var(--color-bg-shade-3);
   --color-menu-item-hover-bg: var(--color-bg-shade-4);
   --color-menu-item-count-bg: var(--color-bg-shade-4);
   --color-menu-item-hover-count-bg: var(--color-bg-shade-5);
 
-  // general text shades
-  --color-text: var(--color-fg-shade-1);
-  --color-text-dim: var(--color-fg-shade-2);
-  --color-text-dim-one: var(--color-fg-shade-3);
+  // contextmenu shades
+  --color-contextmenu-bg: var(--color-bg-shade-4);
+  --color-contextmenu-border: var(--color-bg-shade-5);
+  --color-contextmenu-shadow: 3px 6px 12px rgba(0, 0, 0, 0.07);
+  --color-contextmenu-line: var(--color-bg-shade-5);
+  --color-contextmenu-item-bg: transparent;
+  --color-contextmenu-item-hover-bg: var(--color-bg-shade-5);
 }

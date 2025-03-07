@@ -1,47 +1,99 @@
 <template>
-  <aside class="menu">
-    <img class="logo" src="/just.svg" :alt="$t('app.name')" />
-    <nav class="navigation">
-      <navigation-item name="Shopping" symbol="ListTodo" :active="true" :count="7" />
-      <navigation-item name="Work" symbol="ListTodo" :count="702" />
-      <navigation-item name="Apartment" symbol="ListTodo" />
-      <navigation-item name="Add a list" symbol="ListPlus" :minor="true" />
-    </nav>
-    <div class="menu-bottom">
-      <navigation-item name="Settings" symbol="Bolt" :minor="true" />
-    </div>
-  </aside>
+  <div class="app">
+    <app-menu :open="menuOpen" v-click-outside="closeMenu" />
+    <main class="main">
+      <header class="top">
+        <img class="top-logo" src="/just.svg" :alt="$t('app.name')" />
+        <button type="button" class="top-menu-toggle" @click.stop="menuOpen=!menuOpen">
+          <ui-icon symbol="Menu" :size="18" :stroke-width="2" />
+        </button>
+        <button type="button" class="top-list">
+          Shopping
+          <ui-icon symbol="ChevronDown" :size="16" />
+        </button>
+      </header>
+<!--      <button type="button" @click="preload">Preload</button>-->
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
-  import NavigationItem from '@/components/navigation-item.vue';
-  import { posts } from '@/db';
+  import { ref } from 'vue'
+  import AppMenu from '@/modules/app-menu.vue'
+  import { useResize } from '@/utils/composables'
 
-  let items = posts.find().fetch();
-  console.info(items);
+  let menuOpen = ref(false);
+
+  function closeMenu()
+  {
+    menuOpen.value = false;
+  }
+
+  let resizeTimeout: number | undefined = undefined;
+  useResize(() =>
+  {
+    document.body.classList.add('is-resizing');
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() =>
+    {
+      document.body.classList.remove('is-resizing');
+    }, 300);
+  })
 </script>
 
 <style lang="scss" scoped>
-  .menu
+  .main
   {
-    width: 260px;
-    margin: 10px;
-    border-radius: 8px;
-    background: var(--color-menu-bg);
-    height: calc(100vh - 20px);
-    overflow-y: auto;
-    padding: 16px;
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    padding: var(--space-m) 0;
+
+    @media (max-width: 700px)
+    {
+      padding: var(--space-m);
+    }
   }
 
-  .logo
+  .top
   {
-    width: 30px;
+    color: var(--color-text-dim);
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-s);
   }
 
-  .navigation
+  .top-logo
   {
-    margin-top: 12px;
+    height: 30px;
+  }
+
+  .top-menu-toggle
+  {
+    color: var(--color-text-dim);
+    width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover
+    {
+      color: var(--color-text);
+    }
+  }
+
+  .top-logo, .top-menu-toggle
+  {
+    @media (min-width: 701px)
+    {
+      display: none;
+    }
+  }
+
+  .top-list
+  {
+    color: var(--color-text-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-s);
+    font-weight: 500;
   }
 </style>

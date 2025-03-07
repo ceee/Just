@@ -1,3 +1,5 @@
 {
-  "app.name": "Just"
+  "app.name": "Just",
+  "menu.lists.add": "Add a list",
+  "menu.settings": "Settings"
 }
