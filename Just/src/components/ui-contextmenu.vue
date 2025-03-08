@@ -96,7 +96,7 @@
   {
     --v-offset: 0px;
     position: absolute;
-    min-width: 220px;
+    min-width: 180px;
     min-height: 20px;
     background: var(--color-contextmenu-bg);
     border-radius: var(--radius);

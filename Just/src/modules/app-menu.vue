@@ -66,6 +66,7 @@
     padding: var(--space);
     display: grid;
     grid-template-rows: auto 1fr auto;
+    z-index: 3;
 
     @media (max-width: 700px)
     {
@@ -74,6 +75,7 @@
       transform: translateX(-110%);
       transition: transform 0.6s ease;
       pointer-events: none;
+      box-shadow: var(--color-menu-shadow);
 
       &.is-open
       {
